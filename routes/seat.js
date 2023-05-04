@@ -69,48 +69,4 @@ router.get('/Booking/:id', async function(req, res, next) {
 
 });
 
-
-/* Select Seat */
-router.get('/seating/:id', async function(req, res, next) {
-  
-        try {
-            var id = req.params.id;
-
-                var booking_date = req.body.ticket_date;
-
-                const d = new Date();
-                var date = d.getUTCDate();
-                var month = d.getUTCMonth()+1;
-                var year = d.getUTCFullYear();
-
-                var today_date = date+"/"+month+"/"+year;
-
-                    if(booking_date==null)
-                    {
-                        var booking_date = today_date;
-
-                        var data = await seat.find({"movie_id":id});
-                            res.status(200).json({
-                                status:"Seating Data",
-                                data
-                            })
-                    }
-                    else
-                    {
-                        var booking_date = req.body.ticket_date
-
-                        var data = await seat.find({"movie_id":id , "ticket_date":booking_date});
-                            res.status(200).json({
-                                status:"Seating Data",
-                                data
-                            })
-                    }
-        }   catch (error) {
-            res.status(200).json({
-                status:"somthing went to wrong",
-                error
-            })
-        }
-});
-
 module.exports = router;

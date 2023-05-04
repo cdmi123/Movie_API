@@ -18,12 +18,23 @@ router.post('/register', async function(req, res, next) {
   
   try {
 
-    var data = await register.create(req.body);
+    var email_unique = await register.find({"email":req.body.email});
 
+    if(email_unique.length==0)
+    {
+      var data = await register.create(req.body);
       res.status(200).json({
         status:"success",
         data
       })
+    }
+    else
+    {
+      res.status(201).json({
+        status:"Your Email Address is Already Exists",
+        code:201
+      })
+    }
 
   } catch (error) {
 
