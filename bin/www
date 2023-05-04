@@ -9,7 +9,7 @@ var debug = require('debug')('movie-api:server');
 var http = require('http');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://jasoliyaravi100:ravi0320@movies.o7upehs.mongodb.net/test')
+mongoose.connect('mongodb://localhost:27017/movie')
   .then(() => console.log('Connected!'));
 
 

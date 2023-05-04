@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Movies = new mongoose.Schema({
 
     name:{type:String},
+    image:{type:String},
     category:{type:String},
     language:{type:String},
     release_date:{type:String},
